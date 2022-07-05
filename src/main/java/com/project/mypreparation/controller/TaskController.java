@@ -29,6 +29,11 @@ public class TaskController {
         return taskService.getTasksofUser(id);
     }
 
+    @DeleteMapping("/deletetask/{taskid}")
+    public Object deleteTask(@PathVariable String taskid){
+        return taskService.deleteTask(taskid);
+    }
+
 
     @PostMapping("/addsubtask")
     public SubTasks addSubTask(@RequestBody SubTasks subTasks){
@@ -40,6 +45,11 @@ public class TaskController {
         return subTaskService.getSubTasks(userid, taskid);
     }
 
+    @DeleteMapping("/deletesubtask/{id}")
+    public Object deleteSubTask(@PathVariable String id){
+        return subTaskService.deleteSubTaskById(id);
+    }
+
     @PostMapping("/addnotes")
     public Notes addNotesAndLinks(@RequestBody Notes notes){
         return notesService.addNotes(notes);
@@ -48,5 +58,10 @@ public class TaskController {
     @GetMapping("/getnotes/{userid}/{taskid}")
     public Object getNotesAndLinks(@PathVariable String userid,@PathVariable String taskid) {
         return notesService.getNotesAndLinks(userid, taskid);
+    }
+
+    @DeleteMapping("/deletenotes/{notesid}")
+    public Object deleteNotes(@PathVariable String notesid){
+        return notesService.deleteNotesById(notesid);
     }
 }

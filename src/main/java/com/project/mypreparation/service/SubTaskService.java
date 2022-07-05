@@ -28,4 +28,18 @@ public class SubTaskService {
         subTasks.setCreatedOn(new Date());
         return subTaskRepo.save(subTasks);
     }
+
+    public void deleteSubTaskByTaskId(long taskId) throws Exception{
+        subTaskRepo.deleteByTaskId(taskId);
+    }
+
+    public Object deleteSubTaskById(String subTaskId){
+        long id = Long.parseLong(subTaskId);
+        try {
+            subTaskRepo.deleteById(id);
+        }catch (Exception e){
+            return new GenericObject(-1,this.getClass()+"---"+e.getLocalizedMessage());
+        }
+        return new GenericObject(1,"SubTask Deleted Successfully");
+    }
 }

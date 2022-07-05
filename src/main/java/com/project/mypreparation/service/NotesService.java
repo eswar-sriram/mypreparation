@@ -2,7 +2,6 @@ package com.project.mypreparation.service;
 
 import com.project.mypreparation.model.GenericObject;
 import com.project.mypreparation.model.Notes;
-import com.project.mypreparation.model.SubTasks;
 import com.project.mypreparation.repo.NotesRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,6 +27,19 @@ public class NotesService {
         temp.removeIf(t->(t.getUserId()!=u_id || t.getTaskId()!=t_id));
         if(temp.isEmpty())return new GenericObject(-1,"No Notes");
         return temp;
+    }
 
+    public void deleteNotesByTaskId(long taskId) throws Exception{
+        notesRepo.deleteNotesByTaskId(taskId);
+    }
+
+    public Object deleteNotesById(String notesId){
+        long id = Long.parseLong(notesId);
+        try {
+            notesRepo.deleteById(id);
+        }catch (Exception e){
+            return new GenericObject(-1,this.getClass()+"-"+e.getLocalizedMessage());
+        }
+        return new GenericObject(1,"Notes has been deleted");
     }
 }

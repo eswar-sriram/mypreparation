@@ -22,7 +22,7 @@ public class SubTasks {
     @Column(name = "userid")
     private long userId;
 
-    @Column(name = "taskId")
+    @Column(name = "taskid")
     private long taskId;
 
     @Column(name = "subtaskname")
