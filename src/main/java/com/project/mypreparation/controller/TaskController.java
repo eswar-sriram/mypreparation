@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 public class TaskController {
 
     @Autowired
@@ -50,14 +51,15 @@ public class TaskController {
         return subTaskService.deleteSubTaskById(id);
     }
 
+
     @PostMapping("/addnotes")
     public Notes addNotesAndLinks(@RequestBody Notes notes){
         return notesService.addNotes(notes);
     }
 
-    @GetMapping("/getnotes/{userid}/{taskid}")
-    public Object getNotesAndLinks(@PathVariable String userid,@PathVariable String taskid) {
-        return notesService.getNotesAndLinks(userid, taskid);
+    @GetMapping("/getnotes/{userid}/{taskid}/{subtaskid}")
+    public Object getNotesAndLinks(@PathVariable String userid,@PathVariable String taskid,@PathVariable String subtaskid) {
+        return notesService.getNotesAndLinks(userid, taskid,subtaskid);
     }
 
     @DeleteMapping("/deletenotes/{notesid}")

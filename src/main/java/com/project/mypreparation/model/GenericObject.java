@@ -10,4 +10,12 @@ import lombok.Setter;
 public class GenericObject {
     private int status;
     private String message;
+    private Object object;
+
+    public GenericObject(int status, String message) {
+        this.status = status;
+        this.message = message;
+    }
+
+
 }

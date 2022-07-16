@@ -13,9 +13,20 @@ public interface NotesRepo extends JpaRepository<Notes,Long> {
 
     @Query(value = "delete from notesandlinks where taskid=:id",nativeQuery = true)
     @Modifying
-    void deleteNotes(long id);
+    void deleteNotesByTask(long id);
+
+    @Query(value = "delete from notesandlinks where subtaskid=:id",nativeQuery = true)
+    @Modifying
+    void deleteNotesBySubTask(long id);
+
 
     default void deleteNotesByTaskId(long taskid){
-        deleteNotes(taskid);
+        deleteNotesByTask(taskid);
     }
+
+    default void deleteNotesBySubTaskId(long subtaskid){
+        deleteNotesBySubTask(subtaskid);
+    }
+
+
 }

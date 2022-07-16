@@ -15,6 +15,9 @@ public class SubTaskService {
     @Autowired
     private SubTaskRepo subTaskRepo;
 
+    @Autowired
+    private NotesService notesService;
+
     public Object getSubTasks(String userId,String taskId){
         long u_id= Long.parseLong(userId);
         long t_id= Long.parseLong(taskId);
@@ -36,6 +39,7 @@ public class SubTaskService {
     public Object deleteSubTaskById(String subTaskId){
         long id = Long.parseLong(subTaskId);
         try {
+            notesService.deleteNotesBySubTaskId(id);
             subTaskRepo.deleteById(id);
         }catch (Exception e){
             return new GenericObject(-1,this.getClass()+"---"+e.getLocalizedMessage());

@@ -22,7 +22,7 @@ public class UserService {
         for(UserData i : list){
             if(i.getUserName().equals(userData.getUserName())) {
                 if (i.getPassword().equals(userData.getPassword())) {
-                    return new GenericObject(1, "Success");
+                    return new GenericObject(1, "Success",i);
                 }
                 return new GenericObject(-1, "wrong password");
             }
