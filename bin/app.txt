@@ -1,0 +1,7 @@
+2022-07-06 00:06:40.435  WARN 1544 --- [http-nio-8080-exec-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 23505, SQLState: 23505
+2022-07-06 00:06:40.439 ERROR 1544 --- [http-nio-8080-exec-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : Unique index or primary key violation: "PUBLIC.UK_RP4OC99QPXHLOT5XR9O5BQGUR_INDEX_1 ON PUBLIC.USERDATA(USERNAME NULLS FIRST) VALUES ( /* 1 */ 'eswar' )"; SQL statement:
+insert into userdata (userid, createdon, mail, password, username) values (default, ?, ?, ?, ?) [23505-214]
+2022-07-06 00:09:35.505  INFO 1544 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-07-06 00:09:35.505  INFO 1544 --- [SpringApplicationShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2022-07-06 00:09:35.694  INFO 1544 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-07-06 00:09:35.694  INFO 1544 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
